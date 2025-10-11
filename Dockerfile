@@ -6,7 +6,7 @@ COPY src/ /app/src
 COPY scripts/ /app/scripts
 COPY package.json bun.lock tsconfig.json .eslintrc.json vite.config.ts /app/
 
-RUN bun ci --ignore-scripts && bun run build --ignore-scripts
+RUN bun ci --ignore-scripts && bun run build
 
 RUN echo "" > .env
 
