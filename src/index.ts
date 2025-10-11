@@ -1,3 +1,5 @@
+import { cycleTLSExit } from "@the-convocation/twitter-scraper/cycletls";
+
 import { configuration } from "./configuration/configuration";
 import {
   DAEMON,
@@ -49,6 +51,7 @@ const touitomamout = async () => {
     synchronizedPostsCountThisRun,
   );
   synchronizedPostsCountAllTime.set(postsSyncResponse.metrics.totalSynced);
+  cycleTLSExit();
 
   console.log("\n🦤 → 🦣+☁️");
   console.log(`Touitomamout sync | v${TOUITOMAMOUT_VERSION}`);

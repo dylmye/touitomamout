@@ -1,9 +1,10 @@
 import { AtpAgent } from "@atproto/api";
-import { ResponseType, ResponseTypeNames } from "@atproto/xrpc";
+import { ResponseType, ResponseTypeStrings } from "@atproto/xrpc";
 import pm2 from "@pm2/io";
 import type Counter from "@pm2/io/build/main/utils/metrics/counter";
 import type Gauge from "@pm2/io/build/main/utils/metrics/gauge";
 import { Scraper } from "@the-convocation/twitter-scraper";
+import { cycleTLSFetch } from "@the-convocation/twitter-scraper/cycletls";
 import { createRestAPIClient, mastodon } from "masto";
 import ora from "ora";
 
@@ -79,7 +80,9 @@ export const configuration = async (): Promise<{
   });
   synchronizedHandle.set(`@${TWITTER_HANDLE}`);
 
-  const twitterClient = new Scraper();
+  const twitterClient = new Scraper({
+    fetch: cycleTLSFetch,
+  });
 
   await handleTwitterAuth(twitterClient);
 
@@ -130,14 +133,14 @@ export const configuration = async (): Promise<{
       .catch(({ error }) => {
         log.fail("authentication failure");
         switch (error) {
-          case ResponseTypeNames[ResponseType.AuthRequired]:
+          case ResponseTypeStrings[ResponseType.AuthenticationRequired]:
             throw new Error(
               TouitomamoutError(
                 "Touitomamout was unable to connect to bluesky with the given credentials",
                 ["Please check your .env settings."],
               ),
             );
-          case ResponseTypeNames[ResponseType.XRPCNotSupported]:
+          case ResponseTypeStrings[ResponseType.XRPCNotSupported]:
             throw new Error(
               TouitomamoutError(
                 "The bluesky instance you have provided is not a bluesky instance",
@@ -147,7 +150,7 @@ export const configuration = async (): Promise<{
                 ],
               ),
             );
-          case ResponseTypeNames[ResponseType.RateLimitExceeded]:
+          case ResponseTypeStrings[ResponseType.RateLimitExceeded]:
             throw new Error(
               TouitomamoutError(
                 "You are currently rate limited by the bluesky instance you have provided",
