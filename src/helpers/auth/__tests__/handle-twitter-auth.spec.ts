@@ -87,7 +87,11 @@ describe("handleTwitterAuth", () => {
         expect(restorePreviousSessionSpy).toHaveBeenCalledTimes(1);
         expect(isLoggedInSpy).toHaveBeenCalledTimes(2);
         expect(loginSpy).toHaveBeenCalledTimes(1);
-        expect(loginSpy).toHaveBeenCalledWith("username", "password");
+        expect(loginSpy).toHaveBeenCalledWith(
+          "username",
+          "password",
+          "email@example.com",
+        );
       });
     });
   });
