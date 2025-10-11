@@ -1,3 +1,5 @@
+import { Blob } from "node:buffer";
+
 import sharp from "sharp";
 
 import { DEBUG } from "../../constants";
