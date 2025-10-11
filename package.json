@@ -1,6 +1,6 @@
 {
 	"name": "@dylmye/touitomamout",
-	"version": "2.1.2",
+	"version": "2.1.3",
 	"description": "An easy way to synchronize your Twitter's tweets to Mastodon & Bluesky posts.",
 	"keywords": [
 		"twitter",
