@@ -1,5 +1,6 @@
-import { readFileSync } from "fs";
-import { resolve } from "path";
+import { Blob } from "node:buffer";
+import { readFileSync } from "node:fs";
+import { resolve } from "node:path";
 
 export const makeBlobFromFile = async (
   fileName: string,

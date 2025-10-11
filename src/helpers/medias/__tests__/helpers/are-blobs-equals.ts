@@ -1,3 +1,5 @@
+import type { Blob } from "node:buffer";
+
 export const areBlobsEqual = async (
   blob1: Blob,
   blob2: Blob,

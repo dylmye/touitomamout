@@ -1,3 +1,5 @@
+import type { Blob } from "node:buffer";
+
 import { BLUESKY_MEDIA_MAX_SIZE_BYTES } from "../../constants";
 import { compressMedia } from "./compress-media";
 

@@ -1,6 +1,8 @@
-import { Ora } from "ora";
+import type { Blob } from "node:buffer";
 
-import { ProfileType, ProfileUpdate } from "../../types/profile";
+import type { Ora } from "ora";
+
+import type { ProfileType, ProfileUpdate } from "../../types/profile";
 import { getCachedProfile } from "../cache/get-cached-profile";
 import { computeBlobHash } from "../medias/compute-blob-hash";
 

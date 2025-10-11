@@ -1,12 +1,14 @@
-import { mastodon } from "masto";
-import { Ora } from "ora";
+import { Blob } from "node:buffer";
+
+import type { mastodon } from "masto";
+import type { Ora } from "ora";
 
 import { DEBUG, VOID } from "../constants";
 import { savePostToCache } from "../helpers/cache/save-post-to-cache";
 import { oraProgress } from "../helpers/logs";
 import { getPostExcerpt } from "../helpers/post/get-post-excerpt";
-import { MastodonCacheChunk, Media, Platform } from "../types";
-import { MastodonPost } from "../types/post";
+import { type MastodonCacheChunk, type Media, Platform } from "../types";
+import type { MastodonPost } from "../types/post";
 import { mediaDownloaderService } from "./";
 
 const MASTODON_MEDIA_IMAGES_MAX_COUNT = 4;
@@ -59,7 +61,7 @@ export const mastodonSenderService = async (
         }
         if (mastodonMedia.file instanceof Blob) {
           await client.v2.media
-            .create(mastodonMedia)
+            .create(mastodonMedia as { file: globalThis.Blob })
             .then(async (mediaSent) => {
               mediaAttachments.push(mediaSent);
             })

@@ -1,3 +1,4 @@
+import type { Blob } from "node:buffer";
 import { subtle } from "node:crypto";
 
 import { DEBUG } from "../../constants";

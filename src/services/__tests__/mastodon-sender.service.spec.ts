@@ -1,9 +1,11 @@
-import { mastodon } from "masto";
+import type { Blob } from "node:buffer";
+
+import type { mastodon } from "masto";
 import ora from "ora";
 
 import { makeBlobFromFile } from "../../helpers/medias/__tests__/helpers/make-blob-from-file";
-import { Media } from "../../types";
-import { MastodonPost } from "../../types/post";
+import type { Media } from "../../types";
+import type { MastodonPost } from "../../types/post";
 import { mastodonSenderService } from "../mastodon-sender.service";
 import { mediaDownloaderService } from "../media-downloader.service";
 import { makeTweetMock } from "./helpers/make-tweet-mock";

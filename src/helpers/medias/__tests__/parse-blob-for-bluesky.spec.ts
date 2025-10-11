@@ -1,3 +1,5 @@
+import type { Blob } from "node:buffer";
+
 import { parseBlobForBluesky } from "../parse-blob-for-bluesky";
 import {
   makeBlobFromFile,

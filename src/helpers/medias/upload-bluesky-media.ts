@@ -1,4 +1,6 @@
-import { AtpAgent, ComAtprotoRepoUploadBlob } from "@atproto/api";
+import type { Blob } from "node:buffer";
+
+import type { AtpAgent, ComAtprotoRepoUploadBlob } from "@atproto/api";
 
 import { DEBUG } from "../../constants";
 import { parseBlobForBluesky } from "./parse-blob-for-bluesky";
