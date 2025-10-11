@@ -5,6 +5,7 @@ An easy way to synchronize your Twitter's tweets to Mastodon & Bluesky posts. ðŸ
 This is a straight fork of [Louis Grasset's package](https://github.com/louisgrasset/touitomamout), with the following changes:
 
 * Updated twitter-scraper usage to bypass Cloudflare detection ([more info](https://github.com/the-convocation/twitter-scraper?tab=readme-ov-file#bypassing-cloudflare-bot-detection))
+* Requires twitter account email as part of enhanced 2fa support
 
 As well as some misc infrastructure changes like using Bun and upgrading internal dependencies.
 

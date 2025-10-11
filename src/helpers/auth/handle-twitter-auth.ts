@@ -1,7 +1,11 @@
-import { Scraper } from "@the-convocation/twitter-scraper";
+import type { Scraper } from "@the-convocation/twitter-scraper";
 import ora from "ora";
 
-import { TWITTER_PASSWORD, TWITTER_USERNAME } from "../../constants";
+import {
+  TWITTER_EMAIL,
+  TWITTER_PASSWORD,
+  TWITTER_USERNAME,
+} from "../../constants";
 import { saveCookies } from "../cookies/save-cookies";
 import { oraPrefixer } from "../logs";
 import { restorePreviousSession } from "./restore-previous-session";
@@ -12,7 +16,7 @@ export const handleTwitterAuth = async (client: Scraper) => {
     prefixText: oraPrefixer("🦤 client"),
   }).start("connecting to twitter...");
 
-  if (!TWITTER_USERNAME || !TWITTER_PASSWORD) {
+  if (!TWITTER_USERNAME || !TWITTER_PASSWORD || !TWITTER_EMAIL) {
     log.succeed("connected as guest | replies will not be synced");
     return;
   }
@@ -24,7 +28,7 @@ export const handleTwitterAuth = async (client: Scraper) => {
     log.succeed("connected (session restored)");
   } else {
     // Handle restoration failure
-    await client.login(TWITTER_USERNAME, TWITTER_PASSWORD);
+    await client.login(TWITTER_USERNAME, TWITTER_PASSWORD, TWITTER_EMAIL);
     log.succeed("connected (using credentials)");
   }
   log.stop();

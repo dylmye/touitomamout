@@ -3,7 +3,7 @@ import { join } from "node:path";
 
 import dotenv from "dotenv";
 
-import buildInfo from "./buildInfo.json" assert { type: "json" };
+import buildInfo from "./buildInfo.json";
 
 if (process.env.NODE_ENV !== "test") {
   const envPath = process.argv[2] ?? join(process.cwd(), ".env");
@@ -30,6 +30,7 @@ export const TWITTER_USERNAME = trimTwitterHandle(
   process.env.TWITTER_USERNAME ?? "",
 );
 export const TWITTER_PASSWORD = (process.env.TWITTER_PASSWORD ?? "").trim();
+export const TWITTER_EMAIL = (process.env.TWITTER_EMAIL ?? "").trim();
 export const MASTODON_INSTANCE = (process.env.MASTODON_INSTANCE ?? "").trim();
 export const MASTODON_ACCESS_TOKEN = (
   process.env.MASTODON_ACCESS_TOKEN ?? ""

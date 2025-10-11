@@ -12,6 +12,7 @@ const { mockedConstants } = vi.hoisted(() => ({
   mockedConstants: {
     TWITTER_USERNAME: "",
     TWITTER_PASSWORD: "",
+    TWITTER_EMAIL: "",
   },
 }));
 
@@ -20,6 +21,7 @@ vi.mock("../../../constants", () => mockedConstants);
 vi.doMock("../../../constants", () => ({
   TWITTER_USERNAME: mockedConstants.TWITTER_USERNAME,
   TWITTER_PASSWORD: mockedConstants.TWITTER_PASSWORD,
+  TWITTER_EMAIL: mockedConstants.TWITTER_PASSWORD,
 }));
 
 const restorePreviousSessionSpy = restorePreviousSession as Mock;
@@ -43,6 +45,7 @@ describe("handleTwitterAuth", () => {
     beforeEach(() => {
       mockedConstants.TWITTER_USERNAME = "";
       mockedConstants.TWITTER_PASSWORD = "";
+      mockedConstants.TWITTER_EMAIL = "";
     });
 
     it("should not log in", async () => {
@@ -58,6 +61,7 @@ describe("handleTwitterAuth", () => {
     beforeEach(() => {
       mockedConstants.TWITTER_USERNAME = "username";
       mockedConstants.TWITTER_PASSWORD = "password";
+      mockedConstants.TWITTER_EMAIL = "email@example.com";
     });
 
     describe("when cookies are set", () => {
