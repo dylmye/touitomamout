@@ -10,50 +10,31 @@ jobs:
     name: "Tests Validation"
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           fetch-depth: 0
 
-      - name: Use Node.js
-        uses: actions/setup-node@v4
+      - uses: oven-sh/setup-bun@v2
         with:
-          node-version: '18.x'
-          cache: 'npm'
+          bun-version-file: ".bun-version"
 
       - name: Install dependencies (with dev)
-        run: npm ci --include=dev
+        run: bun run ci --include=dev
 
       - name: Run test and coverage
-        run: npm run test -- --coverage
-
-      - name: SonarCloud Scan
-        uses: SonarSource/sonarcloud-github-action@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        with:
-          args: >
-            -Dsonar.organization=louisgrasset
-            -Dsonar.projectKey=louisgrasset_touitomamout
-            -Dsonar.javascript.lcov.reportPaths=./coverage/lcov.info
-            -Dsonar.sources=src
-            -Dsonar.tests=src
-            -Dsonar.exclusions=**/*.spec.ts,**/__tests__/**
-            -Dsonar.test.inclusions=**/*.spec.ts
+        run: bun run test -- --coverage
 
   commitlint:
     name: "Commitlint Validation"
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           fetch-depth: 0
 
-      - name: Use Node.js
-        uses: actions/setup-node@v4
+      - uses: oven-sh/setup-bun@v2
         with:
-          node-version: '18.x'
-          cache: 'npm'
+          bun-version-file: ".bun-version"
 
       - name: Install dependencies (with dev)
         run: npm ci --include=dev
@@ -70,12 +51,11 @@ jobs:
     name: "Eslint Validation"
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - name: Use Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/checkout@v5
+
+      - uses: oven-sh/setup-bun@v2
         with:
-          node-version: '18.x'
-          cache: 'npm'
+          bun-version-file: ".bun-version"
 
       - name: Install dependencies
         run: npm ci
@@ -90,18 +70,14 @@ jobs:
       - commitlint
       - eslint
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [ '18.x', '20.x', '21.x' ]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           fetch-depth: 0
 
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v4
+      - uses: oven-sh/setup-bun@v2
         with:
-          node-version: ${{ matrix.node-version }}
+          bun-version-file: ".bun-version"
 
       - name: Install dependencies
         run: npm ci
@@ -117,7 +93,7 @@ jobs:
     # Only run on PR. CD will handle build & deployment when pushing to "main"
     if: ${{ github.event_name == 'pull_request' }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           fetch-depth: 0
 
