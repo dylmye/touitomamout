@@ -13,7 +13,7 @@
 		"test": "vitest",
 		"prebuild": "bash scripts/build-info.sh",
 		"build": "vite build",
-		"predeploy": "npm ci && npm run build",
+		"predeploy": "bun ci && bun run build",
 		"pm2": "bash deployment/pm2.sh",
 		"pm2:update": "bash deployment/pm2.sh --update",
 		"commitlint": "commitlint --edit",

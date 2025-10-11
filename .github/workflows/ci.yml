@@ -19,7 +19,7 @@ jobs:
           bun-version-file: ".bun-version"
 
       - name: Install dependencies (with dev)
-        run: bun run ci --include=dev
+        run: bun ci
 
       - name: Run test and coverage
         run: bun run test -- --coverage
@@ -37,7 +37,7 @@ jobs:
           bun-version-file: ".bun-version"
 
       - name: Install dependencies (with dev)
-        run: npm ci --include=dev
+        run: bun ci
 
       - name: Validate current commit (last commit) with commitlint
         if: github.event_name == 'push'
@@ -58,10 +58,10 @@ jobs:
           bun-version-file: ".bun-version"
 
       - name: Install dependencies
-        run: npm ci
+        run: bun ci
 
       - name: Run Eslint
-        run: npm run lint
+        run: bun run lint
 
   build:
     name: "Build from source"
@@ -80,10 +80,10 @@ jobs:
           bun-version-file: ".bun-version"
 
       - name: Install dependencies
-        run: npm ci
+        run: bun ci
 
       - name: Build from source
-        run: npm run build
+        run: bun run build
 
   docker:
     name: "Build docker image"
