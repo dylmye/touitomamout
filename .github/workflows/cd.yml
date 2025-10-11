@@ -37,9 +37,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: |
-            ${{ github.repository }}:dev
-            ghcr.io/${{ github.repository }}:dev
+          tags: ghcr.io/${{ github.repository }}:dev
           labels: ${{ steps.meta.outputs.labels }}
           platforms: linux/amd64,linux/arm64,
 
