@@ -99,8 +99,8 @@ describe("mastodonSenderService", () => {
   describe("when the post has some media", () => {
     let expectedBlob: Blob;
     beforeAll(async () => {
-      (expectedBlob = await makeBlobFromFile("image-png.png", "image/png")),
-        mediaDownloaderServiceMock.mockResolvedValue(expectedBlob);
+      expectedBlob = await makeBlobFromFile("image-png.png", "image/png");
+      mediaDownloaderServiceMock.mockResolvedValue(expectedBlob);
     });
 
     it("should send the post with its media ", async () => {
@@ -143,8 +143,8 @@ describe("mastodonSenderService", () => {
   describe("when the tweet as a video", () => {
     let expectedBlob: Blob;
     beforeAll(async () => {
-      (expectedBlob = await makeBlobFromFile("video-mp4.mp4", "video/mp4")),
-        mediaDownloaderServiceMock.mockResolvedValue(expectedBlob);
+      expectedBlob = await makeBlobFromFile("video-mp4.mp4", "video/mp4");
+      mediaDownloaderServiceMock.mockResolvedValue(expectedBlob);
     });
 
     it("should send the post with media ", async () => {

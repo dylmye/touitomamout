@@ -13,7 +13,7 @@ if (process.env.NODE_ENV !== "test") {
 
   try {
     accessSync(envPath, constants.F_OK);
-  } catch (err) {
+  } catch (_err) {
     throw new Error("No suitable .env file found.");
   }
   dotenv.config({ path: envPath });
