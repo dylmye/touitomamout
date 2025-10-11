@@ -10,6 +10,6 @@ RUN bun ci --ignore-scripts && bun run build
 
 RUN echo "" > .env
 
-USER node
+USER bun
 
 CMD node /app/dist/index.js "$ENV_FILE"
