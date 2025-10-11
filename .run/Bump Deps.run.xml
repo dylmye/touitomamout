@@ -1,6 +1,6 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="Bump Deps" type="ShConfigurationType">
-    <option name="SCRIPT_TEXT" value="npx npm-check-updates -u &amp;&amp; npm i &amp;&amp; git commit ./package.json ./package-lock.json -m &quot;chore: bump deps&quot;" />
+    <option name="SCRIPT_TEXT" value="npx npm-check-updates -u &amp;&amp; npm i &amp;&amp; git commit ./package.json ./bun.lock -m &quot;chore: bump deps&quot;" />
     <option name="INDEPENDENT_SCRIPT_PATH" value="true" />
     <option name="SCRIPT_PATH" value="" />
     <option name="SCRIPT_OPTIONS" value="" />

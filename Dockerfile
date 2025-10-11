@@ -1,12 +1,12 @@
-FROM node:lts-alpine
+FROM oven/bun:1 AS base
 
 WORKDIR /app
 
 COPY src/ /app/src
 COPY scripts/ /app/scripts
-COPY package.json package-lock.json tsconfig.json .eslintrc.json vite.config.ts /app/
+COPY package.json bun.lock tsconfig.json .eslintrc.json vite.config.ts /app/
 
-RUN npm ci --ignore-scripts && npm rebuild --platform=linux --libc=musl sharp && npm run build --ignore-scripts
+RUN bun ci --ignore-scripts && bun run build --ignore-scripts
 
 RUN echo "" > .env
 

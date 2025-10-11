@@ -1,72 +1,72 @@
 {
-  "name": "@dylmye/touitomamout",
-  "version": "2.0.0",
-  "description": "An easy way to synchronize your Twitter's tweets to Mastodon & Bluesky posts.",
-  "keywords": [
-    "twitter",
-    "bluesky",
-    "mastodon"
-  ],
-  "scripts": {
-    "lint": "eslint src/ --ext .ts",
-    "lint:fix": "eslint src/ --ext .ts --fix",
-    "test": "vitest",
-    "prebuild": "bash scripts/build-info.sh",
-    "build": "vite build",
-    "predeploy": "npm ci && npm run build",
-    "pm2": "bash deployment/pm2.sh",
-    "pm2:update": "bash deployment/pm2.sh --update",
-    "commitlint": "commitlint --edit",
-    "prepare": "husky"
-  },
-  "engines": {
-    "node": ">=22.20.0"
-  },
-  "type": "module",
-  "contributors": [
-    "Louis Grasset",
-    "Dylan Myers"
-  ],
-  "homepage": "https://github.com/dylmye/touitomamout",
-  "license": "AGPL-3.0-or-later",
-  "repository": "github:dylmye/touitomamout",
-  "dependencies": {
-    "@atproto/api": "^0.17.2",
-    "@pm2/io": "^6.1.0",
-    "@the-convocation/twitter-scraper": "^0.19.0",
-    "cli-spinners": "^3.3.0",
-    "cycletls": "^2.0.5",
-    "dotenv": "^17.2.3",
-    "html-entities": "^2.6.0",
-    "html-escaper": "^3.0.3",
-    "image-size": "^1.1.1",
-    "masto": "^7.2.0",
-    "mime": "^4.1.0",
-    "node-html-parser": "^6.1.13",
-    "ora": "^9.0.0",
-    "sharp": "^0.34.4",
-    "tough-cookie": "^6.0.0"
-  },
-  "devDependencies": {
-    "@commitlint/cli": "^20.0.0",
-    "@commitlint/config-conventional": "^20.0.0",
-    "@types/html-escaper": "^3.0.4",
-    "@types/mime": "^4.0.0",
-    "@types/node": "^22.0.0",
-    "@typescript-eslint/eslint-plugin": "8",
-    "@typescript-eslint/parser": "8",
-    "@vitest/coverage-v8": "^2.1.2",
-    "ajv": "^8",
-    "eslint": "^8.56.0",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-import": "^2.31.0",
-    "eslint-plugin-prettier": "^5.2.1",
-    "eslint-plugin-simple-import-sort": "^12.1.1",
-    "husky": "^9.1.7",
-    "prettier": "3.3.3",
-    "typescript": "^5.6.2",
-    "vite": "^5.4.8",
-    "vite-plugin-dts": "^4.2.3",
-    "vitest": "^2.1.2"
-  }
+	"name": "@dylmye/touitomamout",
+	"version": "2.0.1",
+	"description": "An easy way to synchronize your Twitter's tweets to Mastodon & Bluesky posts.",
+	"keywords": [
+		"twitter",
+		"bluesky",
+		"mastodon"
+	],
+	"scripts": {
+		"lint": "eslint src/ --ext .ts",
+		"lint:fix": "eslint src/ --ext .ts --fix",
+		"test": "vitest",
+		"prebuild": "bash scripts/build-info.sh",
+		"build": "vite build",
+		"predeploy": "npm ci && npm run build",
+		"pm2": "bash deployment/pm2.sh",
+		"pm2:update": "bash deployment/pm2.sh --update",
+		"commitlint": "commitlint --edit",
+		"prepare": "husky"
+	},
+	"engines": {
+		"node": ">=22.20.0"
+	},
+	"type": "module",
+	"contributors": [
+		"Louis Grasset",
+		"Dylan Myers"
+	],
+	"homepage": "https://github.com/dylmye/touitomamout",
+	"license": "AGPL-3.0-or-later",
+	"repository": "github:dylmye/touitomamout",
+	"dependencies": {
+		"@atproto/api": "^0.17.2",
+		"@pm2/io": "^6.1.0",
+		"@the-convocation/twitter-scraper": "^0.19.0",
+		"cli-spinners": "^3.3.0",
+		"cycletls": "^2.0.5",
+		"dotenv": "^17.2.3",
+		"html-entities": "^2.6.0",
+		"html-escaper": "^3.0.3",
+		"image-size": "^1.1.1",
+		"masto": "^7.2.0",
+		"mime": "^4.1.0",
+		"node-html-parser": "^6.1.13",
+		"ora": "^9.0.0",
+		"sharp": "^0.34.4",
+		"tough-cookie": "^6.0.0"
+	},
+	"devDependencies": {
+		"@commitlint/cli": "^20.0.0",
+		"@commitlint/config-conventional": "^20.0.0",
+		"@types/html-escaper": "^3.0.4",
+		"@types/mime": "^4.0.0",
+		"@types/node": "^22.0.0",
+		"@typescript-eslint/eslint-plugin": "8",
+		"@typescript-eslint/parser": "8",
+		"@vitest/coverage-v8": "^2.1.2",
+		"ajv": "^8",
+		"eslint": "^8.56.0",
+		"eslint-config-prettier": "^9.1.0",
+		"eslint-plugin-import": "^2.31.0",
+		"eslint-plugin-prettier": "^5.2.1",
+		"eslint-plugin-simple-import-sort": "^12.1.1",
+		"husky": "^9.1.7",
+		"prettier": "3.3.3",
+		"typescript": "^5.6.2",
+		"vite": "^5.4.8",
+		"vite-plugin-dts": "^4.2.3",
+		"vitest": "^2.1.2"
+	}
 }
