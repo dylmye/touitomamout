@@ -18,4 +18,4 @@ RUN echo "" > .env
 
 USER bun
 
-CMD ["node", "/app/dist/index.js", "${ENV_FILE}"]
+CMD node /app/dist/index.js "$ENV_FILE"
