@@ -59,12 +59,12 @@ const touitomamout = async () => {
   console.log(
     `| ${postsSyncResponse.metrics.justSynced
       .toString()
-      .padStart(5, "0")}  ʲᵘˢᵗ ˢʸⁿᶜᵉᵈ ᵖᵒˢᵗˢ`,
+      .padStart(5, "0")}  Just synced posts`,
   );
   console.log(
     `| ${postsSyncResponse.metrics.totalSynced
       .toString()
-      .padStart(5, "0")}  ˢʸⁿᶜᵉᵈ ᵖᵒˢᵗˢ ˢᵒ ᶠᵃʳ`,
+      .padStart(5, "0")}  synced posts so far`,
   );
 };
 
