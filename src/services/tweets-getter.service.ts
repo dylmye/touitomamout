@@ -48,6 +48,18 @@ export const tweetsGetterService = async (
     LATEST_TWEETS_COUNT,
   );
 
+  // TEMP to handle issue where tweet scraper is including pinned tweets
+  /////////////////////////////////
+  // problem: preventPostsSynchronization logic is added with the assumption
+  // that if <current post> has already been posted, then every post after it
+  // has probably been synced too. However currently twitter-scraper includes
+  // the pinned tweet as the first tweet, so if the pinned tweet isn't the
+  // latest then all the actual posts that should be synced are skipped!!
+  // so this constant tells the loop to not set `preventPostsSynchronization`
+  // to `true` if it's pinned!
+  // @see https://github.com/the-convocation/twitter-scraper/issues/164
+  let isFirstTweet = true;
+
   for await (const latestTweet of latestTweets) {
     log.text = "post: → checking for synchronization needs";
     if (!preventPostsSynchronization) {
@@ -56,13 +68,15 @@ export const tweetsGetterService = async (
 
       if (tweet) {
         // If the latest eligible tweet is cached, mark sync as unneeded.
-        if (isTweetCached(tweet, cachedPosts)) {
+        if (!isFirstTweet && isTweetCached(tweet, cachedPosts)) {
           preventPostsSynchronization = true;
         }
         // If the latest tweet is not cached,
         // skip the current optimization and go to synchronization step.
         break;
       }
+
+      isFirstTweet = false;
     }
   }
 
